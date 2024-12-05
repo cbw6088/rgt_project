@@ -37,8 +37,8 @@ export default function listPage() {
 
     return (
         <div className="flex flex-col w-screen h-screen">
-            <div className="w-full h-[50%] flex bg-stone-100">
-                <div className="w-full flex justify-between  my-4">
+            <div className="w-full h-18 flex bg-stone-100">
+                <div className="w-full flex justify-between items-center  my-4">
                     <div className="ml-4 font-black text-xl text-gray-800">
                         RGT BOOKSTORE
                     </div>
