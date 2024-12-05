@@ -6,6 +6,7 @@
 
 #### 라이브러리
 - lodash ("^4.17.13") -> npm install @types/lodash --save-dev
+- fortawesome ("^6.7.1") -> npm install @fortawesome/fontawesome-free
 
 
 

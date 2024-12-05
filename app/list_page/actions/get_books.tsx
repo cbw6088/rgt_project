@@ -1,6 +1,5 @@
 import { books } from "@/app/mock_data/books";
 import { debounce, filter } from "lodash";
-import { start } from "repl";
 
 export const getBooks = async (page: number, searchQuery: string = "") => {
     const limite = 10;
