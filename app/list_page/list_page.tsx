@@ -64,7 +64,6 @@ export default function listPage() {
                         <i className="fas fa-bars"></i>
                     </div>
                 </div>
-
             </div>
             <BookList books={filteredBooks} />
             <div className="flex justify-center my-4">
@@ -72,7 +71,7 @@ export default function listPage() {
                     <button
                         key={index + 1}
                         onClick={() => setPage(index + 1)}
-                        className={`mx-1 px-4 py-2 rounded-md ${page === index + 1 ? 'font-black' : 'font-normal'}`}
+                        className={`mx-1 px-4 py-2 rounded-md my-8 ${page === index + 1 ? 'font-black' : 'font-normal'}`}
                     >
                         {index + 1}
                     </button>
