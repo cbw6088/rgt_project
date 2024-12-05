@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { getBooks, debounceSearch } from "./actions/get_books";
 import { books } from "../mock_data/books";
+import BookList from "./components/book_list";
 import '@fortawesome/fontawesome-free/css/all.min.css';
 
 export default function listPage() {
@@ -64,6 +65,18 @@ export default function listPage() {
                     </div>
                 </div>
 
+            </div>
+            <BookList books={filteredBooks} />
+            <div className="flex justify-center my-4">
+                {Array.from({ length: totalPages }, (_, index) => (
+                    <button
+                        key={index + 1}
+                        onClick={() => setPage(index + 1)}
+                        className={`mx-1 px-4 py-2 rounded-md ${page === index + 1 ? 'font-black' : 'font-normal'}`}
+                    >
+                        {index + 1}
+                    </button>
+                ))}
             </div>
         </div>
     );
