@@ -1,3 +1,13 @@
+### [프로젝트 버전]
+- react@19.0.0-rc-66855b96-20241106
+- next@15.0.3
+- typescript@5.7.2
+- tailwindcss@3.4.16
+
+
+
+
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
