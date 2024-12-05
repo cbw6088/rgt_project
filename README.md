@@ -4,6 +4,9 @@
 - typescript@5.7.2
 - tailwindcss@3.4.16
 
+#### 라이브러리
+- lodash ("^4.17.13") -> npm install @types/lodash --save-dev
+
 
 
 
