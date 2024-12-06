@@ -398,6 +398,106 @@ export const books = [
         price: 42000, 
         description: "클라우드 컴퓨팅의 개념과 활용 사례를 다룬 책.", 
         rating: 4.3 
+      },
+      { 
+        id: 41, 
+        title: "Django 시작하기", 
+        author: "크리스 본더스", 
+        total: 100, 
+        stock: 50, 
+        price: 33000, 
+        description: "Django 프레임워크를 처음 배우는 입문자용 가이드.", 
+        rating: 4.4 
+      },
+      { 
+        id: 42, 
+        title: "Kafka 실전 가이드", 
+        author: "마크 리드", 
+        total: 120, 
+        stock: 80, 
+        price: 47000, 
+        description: "Kafka를 활용한 데이터 스트리밍과 실시간 처리 사례.", 
+        rating: 4.5 
+      },
+      { 
+        id: 43, 
+        title: "AWS 완벽 가이드", 
+        author: "이재호", 
+        total: 140, 
+        stock: 60, 
+        price: 49000, 
+        description: "AWS의 핵심 서비스와 활용 방법을 설명한 실전 가이드.", 
+        rating: 4.8 
+      },
+      { 
+        id: 44, 
+        title: "TensorFlow 실습", 
+        author: "앨리스 정", 
+        total: 150, 
+        stock: 90, 
+        price: 43000, 
+        description: "TensorFlow를 활용한 머신러닝 프로젝트 실습서.", 
+        rating: 4.7 
+      },
+      { 
+        id: 45, 
+        title: "강화학습 입문", 
+        author: "홍길동", 
+        total: 130, 
+        stock: 60, 
+        price: 42000, 
+        description: "강화학습의 기초 개념과 알고리즘을 배우는 책.", 
+        rating: 4.3 
+      },
+      { 
+        id: 46, 
+        title: "Unity 게임 개발", 
+        author: "박진우", 
+        total: 110, 
+        stock: 50, 
+        price: 45000, 
+        description: "Unity를 활용해 게임 개발의 기초부터 응용까지 배우는 책.", 
+        rating: 4.6 
+      },
+      { 
+        id: 47, 
+        title: "AI와 미래", 
+        author: "최은영", 
+        total: 90, 
+        stock: 30, 
+        price: 38000, 
+        description: "인공지능의 현재와 미래를 탐구하는 도서.", 
+        rating: 4.5 
+      },
+      { 
+        id: 48, 
+        title: "빅데이터 분석", 
+        author: "김명수", 
+        total: 160, 
+        stock: 100, 
+        price: 41000, 
+        description: "빅데이터의 개념과 분석 방법을 배우는 책.", 
+        rating: 4.8 
+      },
+      { 
+        id: 49, 
+        title: "크롤링과 자동화", 
+        author: "정명훈", 
+        total: 180, 
+        stock: 110, 
+        price: 35000, 
+        description: "웹 크롤링과 자동화 기술을 배우는 실전 가이드.", 
+        rating: 4.2 
+      },
+      { 
+        id: 50, 
+        title: "정보보안 원리", 
+        author: "이상진", 
+        total: 200, 
+        stock: 150, 
+        price: 47000, 
+        description: "정보보안의 기본 원리와 응용 사례를 배우는 책.", 
+        rating: 4.9 
       }
   ];
   
