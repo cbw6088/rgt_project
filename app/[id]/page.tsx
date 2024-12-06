@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react";
-import { useRouter } from 'next/router';
+import { useParams } from "next/navigation";
 import { books } from '@/app/mock_data/books'; 
 import BookItem from "../components/book_item";
 
@@ -17,8 +17,7 @@ interface Book {
 }
 
 export default function DetailPage() {
-    const router = useRouter();
-    const { id } = router.query;
+    const { id } = useParams();
     const [book, setBook] = useState<Book | null>(null);
 
     useEffect(() => {
