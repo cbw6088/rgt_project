@@ -1,17 +1,22 @@
-import React from "react";
-import { useReducer } from "react";
+"use client"
+
+// import React from "react";
+import { useRouter } from "next/router";
 
 interface Book {
     id: number;
     title: string;
     author: string;
     price: number;
+    description: string;
+    rating: number;
 }
 
 const BookItem: React.FC<{ book: Book }> = ({ book }) => {
+    // const router = useRouter();
 
     const handleClick = () => {
-        // router.push(`/book/${book.id}`);
+        // router.push(`/detail_page/${book.id}`); 
     };
 
     return (
@@ -28,6 +33,7 @@ const BookItem: React.FC<{ book: Book }> = ({ book }) => {
             </button>
             <p>저자: {book.author}</p>
             <p>가격: {book.price} 원</p>
+            <p>평점: {book.rating} 점</p>
         </div>
     );
 };

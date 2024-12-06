@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { getBooks } from "./actions/get_books";
-import BookList from "./components/book_list";
+import BookList from "../components/book_list";
 import '@fortawesome/fontawesome-free/css/all.min.css';
 
 export default function listPage() {
