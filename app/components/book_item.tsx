@@ -1,7 +1,7 @@
 "use client"
 
-// import React from "react";
-import { useRouter } from "next/router";
+import React from "react";
+import { useRouter } from "next/navigation";
 
 interface Book {
     id: number;
@@ -13,10 +13,10 @@ interface Book {
 }
 
 const BookItem: React.FC<{ book: Book }> = ({ book }) => {
-    // const router = useRouter();
+    const router = useRouter();
 
     const handleClick = () => {
-        // router.push(`/detail_page/${book.id}`); 
+        router.push(`/${book.id}`); 
     };
 
     return (

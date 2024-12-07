@@ -5,7 +5,7 @@
 - tailwindcss@3.4.16
 
 #### 라이브러리
-- lodash ("^4.17.13") -> npm install @types/lodash --save-dev
+- lodash ("^4.17.13") -> npm install @types/lodash --save-dev // 삭제 예정
 - fortawesome ("^6.7.1") -> npm install @fortawesome/fontawesome-free
 
 
