@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { useParams } from "next/navigation";
 import { books } from '@/app/mock_data/books'; 
-import BookItem from "../components/book_item";
+import '@fortawesome/fontawesome-free/css/all.min.css';
 
 interface Book {
     id: number;
@@ -16,7 +16,7 @@ interface Book {
     stock: number;
 }
 
-export default function DetailPage() {
+export default function Page() {
     const { id } = useParams();
     const [book, setBook] = useState<Book | null>(null);
 
@@ -27,7 +27,15 @@ export default function DetailPage() {
         }
     }, [id]);
 
-    if (!book) return <div>Loading...</div>; // 데이터 로딩 중
+    if (!book) return <div>Loading...</div>;
+
+    const handlePurchase = () => {
+        alert("구매할 수 없습니다.");
+    };
+
+    const handleAddToCart = () => {
+        alert("장바구니에 담을 수 없습니다.");
+    };
 
     return (
         <div className="flex flex-col w-screen h-screen">
@@ -42,7 +50,32 @@ export default function DetailPage() {
                 </div>
             </div>
             <div className="p-4">
-                <BookItem book={book} />
+                <div className="flex flex-row justify-center mt-10">
+                    <div className="w-[210px] h-[297px] bg-gray-200 mb-2 rounded-md mr-4" />
+                    <div className="flex flex-col items-start justify-center ml-4">
+                        <h2 className="text-2xl font-bold">{book.title}</h2>
+                        <div className="border-b-2 border-gray-50 my-2"/>
+                        <p className="text-lg">저자: {book.author}</p>
+                        <p className="text-lg">가격: {book.price} 원</p>
+                        <p className="text-lg">평점: {book.rating} 점</p>
+                        <p className="text-lg">재고: {book.stock} 개</p>
+                        <p className="text-lg">{book.description}</p>
+                        <div className="flex flex-row w-full mt-4">
+                            <button 
+                                className="flex-1 border border-gray-300 p-2 mr-2"
+                                onClick={handlePurchase}
+                            >
+                                구매하기
+                            </button>
+                            <button 
+                                className="flex-1 border border-gray-300 p-2"
+                                onClick={handleAddToCart}
+                            >
+                                장바구니
+                            </button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     );

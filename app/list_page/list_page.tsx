@@ -1,56 +1,74 @@
-"use client"
+"use client";
 
 import { useState, useEffect } from "react";
-import { getBooks } from "./actions/get_books";
+import { loadBooks } from "../utils/storage";
 import BookList from "../components/book_list";
-import '@fortawesome/fontawesome-free/css/all.min.css';
 
-export default function listPage() {
-    const [page, setPage] = useState(1);
+interface Book {
+    id: number;
+    title: string;
+    author: string;
+    price: number;
+    description: string;
+    rating: number;
+    total: number;
+    stock: number;
+}
+
+export default function ListPage() {
+    const [books, setBooks] = useState<Book[]>([]);
+    const [filteredBooks, setFilteredBooks] = useState<Book[]>([]);
+    const [displayBooks, setDisplayBooks] = useState<Book[]>([]);
     const [searchQuery, setSearchQuery] = useState("");
-    const [filteredBooks, setFilteredBooks] = useState<any[]>([]);
-    const [total, setTotal] = useState(0);
-    const [category, setCategory] = useState("title");
+    const [category, setCategory] = useState<keyof Book>("title");
+    const [page, setPage] = useState(1);
+    const booksPerPage = 10;
 
     useEffect(() => {
-        const fetchBooks = async () => {
-            const data = await getBooks(page, searchQuery, category);
-            setFilteredBooks(data.books);
-            setTotal(data.total);
-        };
-        fetchBooks();
-    }, [page, searchQuery, category]);
+        const storedBooks = loadBooks();
+        setBooks(storedBooks);
+        setFilteredBooks(storedBooks); // 초기 필터링 데이터 설정
+        setDisplayBooks(storedBooks.slice(0, booksPerPage)); // 첫 페이지 데이터
+    }, []);
 
-    // 검색어 입력
-    const handleSearch = async (e: React.ChangeEvent<HTMLInputElement>) => {
-        const query = e.target.value;
+    useEffect(() => {
+        // 페이지 변경 시 현재 페이지 데이터 업데이트
+        const startIndex = (page - 1) * booksPerPage;
+        const endIndex = page * booksPerPage;
+        setDisplayBooks(filteredBooks.slice(startIndex, endIndex));
+    }, [page, filteredBooks]);
+
+    const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const query = e.target.value.toLowerCase();
         setSearchQuery(query);
-        
-        // 검색어에 따라 필터링된 결과
-        const data = await getBooks(page, query, category);
-        setFilteredBooks(data.books);
-        setTotal(data.total);
-    }
 
-    // 검색 카테고리
-    const handleCategoryChange = async (e: React.ChangeEvent<HTMLSelectElement>) => {
-        const newCategory = e.target.value;
+        const filtered = books.filter((book) => {
+            const field = book[category];
+            if (typeof field === "string") {
+                return field.toLowerCase().includes(query);
+            }
+            return false;
+        });
+
+        setFilteredBooks(filtered);
+        setPage(1);
+    };
+
+    const handleCategoryChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+        const newCategory = e.target.value as keyof Book;
         setCategory(newCategory);
         setSearchQuery("");
-        const data = await getBooks(1, "", newCategory);
-        setFilteredBooks(data.books);
-        setTotal(data.total);
-    }
+        setFilteredBooks(books);
+        setPage(1);
+    };
 
-    const totalPages = Math.ceil(total / 10);
+    const totalPages = Math.ceil(filteredBooks.length / booksPerPage);
 
     return (
         <div className="flex flex-col w-screen h-screen">
             <div className="w-full h-18 flex bg-stone-100">
                 <div className="w-full flex justify-between items-center my-4">
-                    <div className="ml-4 font-black text-xl text-gray-800">
-                        RGT BOOKSTORE
-                    </div>
+                    <div className="ml-4 font-black text-xl text-gray-800">RGT BOOKSTORE</div>
                     <div className="flex justify-center w-[70%]">
                         <select
                             value={category}
@@ -68,12 +86,11 @@ export default function listPage() {
                             className="p-2 w-[60%] h-10 rounded-r-md bg-stone-50 border"
                         />
                     </div>
-                    <div className="mr-4">
-                        <i className="fas fa-bars"></i>
-                    </div>
                 </div>
             </div>
-            <BookList books={filteredBooks} />
+
+            <BookList books={displayBooks} />
+            
             <div className="flex justify-center my-4">
                 {Array.from({ length: totalPages }, (_, index) => (
                     <button
