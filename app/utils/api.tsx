@@ -9,7 +9,7 @@ export const fetchBooks = async (): Promise<Book[]> => {
         if (!response.ok) {
             throw new Error("Failed to fetch books");
         }
-        return response.json();
+        return (await response.json()) as Book[]; // 명확한 타입 지정
     } catch (error) {
         console.error(error);
         return [];
@@ -17,13 +17,13 @@ export const fetchBooks = async (): Promise<Book[]> => {
 };
 
 // 책 상세 정보 조회
-export const fetchBookById = async (id: number): Promise<any> => {
+export const fetchBookById = async (id: number): Promise<Book | null> => {
     try {
         const response = await fetch(`${BASE_URL}/${id}`);
         if (!response.ok) {
             throw new Error("Failed to fetch book details");
         }
-        return response.json();
+        return (await response.json()) as Book; // 명확한 타입 지정
     } catch (error) {
         console.error(error);
         return null;
@@ -31,7 +31,7 @@ export const fetchBookById = async (id: number): Promise<any> => {
 };
 
 // 책 추가
-export const addBook = async (book: any): Promise<any> => {
+export const addBook = async (book: Book): Promise<Book | null> => {
     try {
         const response = await fetch(`${BASE_URL}`, {
             method: "POST",
@@ -41,7 +41,7 @@ export const addBook = async (book: any): Promise<any> => {
         if (!response.ok) {
             throw new Error("Failed to add book");
         }
-        return response.json();
+        return (await response.json()) as Book; // 명확한 타입 지정
     } catch (error) {
         console.error(error);
         return null;
@@ -49,7 +49,7 @@ export const addBook = async (book: any): Promise<any> => {
 };
 
 // 책 정보 수정
-export const updateBook = async (id: number, updatedData: any): Promise<any> => {
+export const updateBook = async (id: number, updatedData: Partial<Book>): Promise<Book | null> => {
     try {
         const response = await fetch(`${BASE_URL}/${id}`, {
             method: "PUT",
@@ -59,7 +59,7 @@ export const updateBook = async (id: number, updatedData: any): Promise<any> => 
         if (!response.ok) {
             throw new Error("Failed to update book");
         }
-        return response.json();
+        return (await response.json()) as Book; // 명확한 타입 지정
     } catch (error) {
         console.error(error);
         return null;
