@@ -2,8 +2,8 @@
 
 import { useState, useEffect } from "react";
 import { useParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { books } from '@/app/mock_data/books'; 
-import '@fortawesome/fontawesome-free/css/all.min.css';
 
 interface Book {
     id: number;
@@ -17,6 +17,7 @@ interface Book {
 }
 
 export default function Page() {
+    const router = useRouter();
     const { id } = useParams();
     const [book, setBook] = useState<Book | null>(null);
 
@@ -41,12 +42,18 @@ export default function Page() {
         <div className="flex flex-col w-screen h-screen">
             <div className="w-full h-18 flex bg-stone-100">
                 <div className="w-full flex justify-between items-center my-4">
-                    <div className="ml-4 font-black text-xl text-gray-800">
+                    <div 
+                        className="ml-4 font-black text-xl text-gray-800"
+                        onClick={() => router.push("/list_page")}
+                    >
                         RGT BOOKSTORE
                     </div>
-                    <div className="mr-4">
-                        <i className="fas fa-bars"></i>
-                    </div>
+                    <button
+                        className="mr-4 px-4 py-2 bg-gray-500 text-white rounded-md hover:bg-gray-600"
+                        onClick={() => router.push("/manager_page")}
+                    >
+                        관리
+                    </button>
                 </div>
             </div>
             <div className="p-4">

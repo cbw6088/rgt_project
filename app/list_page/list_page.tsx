@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 import { loadBooks } from "../utils/storage";
 import BookList from "../components/book_list";
 
@@ -16,6 +17,7 @@ interface Book {
 }
 
 export default function ListPage() {
+    const router = useRouter();
     const [books, setBooks] = useState<Book[]>([]);
     const [filteredBooks, setFilteredBooks] = useState<Book[]>([]);
     const [displayBooks, setDisplayBooks] = useState<Book[]>([]);
@@ -68,7 +70,12 @@ export default function ListPage() {
         <div className="flex flex-col w-screen h-screen">
             <div className="w-full h-18 flex bg-stone-100">
                 <div className="w-full flex justify-between items-center my-4">
-                    <div className="ml-4 font-black text-xl text-gray-800">RGT BOOKSTORE</div>
+                    <div 
+                        className="ml-4 font-black text-xl text-gray-800"
+                        onClick={() => router.push("/list_page")}
+                    >
+                        RGT BOOKSTORE
+                    </div>
                     <div className="flex justify-center w-[70%]">
                         <select
                             value={category}
@@ -86,6 +93,12 @@ export default function ListPage() {
                             className="p-2 w-[60%] h-10 rounded-r-md bg-stone-50 border"
                         />
                     </div>
+                    <button
+                        className="mr-4 px-4 py-2 bg-gray-500 text-white rounded-md hover:bg-gray-600"
+                        onClick={() => router.push("/manager_page")}
+                    >
+                        관리
+                    </button>
                 </div>
             </div>
 

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 import { books as initialBooks } from "@/app/mock_data/books";
 import { loadBooks, saveBooks, initializeBooks } from "../utils/storage";
 
@@ -16,6 +17,7 @@ interface Book {
 }
 
 const ManageBooks: React.FC = () => {
+    const router = useRouter();
     const [books, setBooks] = useState<Book[]>([]); // 책 상태 관리
     const [newBook, setNewBook] = useState<Book>({
         id: 0,
@@ -65,11 +67,26 @@ const ManageBooks: React.FC = () => {
     };
 
     return (
-        <div className="p-6">
-            <h1 className="text-2xl font-bold mb-4">책 관리</h1>
+        <div>
+            <div className="w-full h-18 flex bg-stone-100">
+                <div className="w-full flex justify-between items-center my-4">
+                    <div 
+                        className="ml-4 font-black text-xl text-gray-800"
+                        onClick={() => router.push("/list_page")}
+                    >
+                        RGT BOOKSTORE
+                    </div>
+                    <button
+                        className="mr-4 px-4 py-2 bg-gray-500 text-white rounded-md hover:bg-gray-600"
+                        onClick={() => router.push("/manager_page")}
+                    >
+                        관리
+                    </button>
+                </div>
+            </div>
 
             {/* 책 추가 폼 */}
-            <div className="mb-6 p-4 border rounded-md shadow-md">
+            <div className="mb-6 p-4 border rounded-md shadow-md m-4">
                 <h2 className="text-xl font-semibold mb-3">책 추가</h2>
                 <div className="grid grid-cols-2 gap-4">
                     <div>
@@ -115,14 +132,14 @@ const ManageBooks: React.FC = () => {
                 </div>
                 <button 
                     onClick={addBook} 
-                    className="mt-4 px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600"
+                    className="mt-4 px-4 py-2 bg-gray-500 text-white rounded-md hover:bg-gray-600"
                 >
                     추가
                 </button>
             </div>
 
             {/* 책 목록 */}
-            <table className="w-full border-collapse border">
+            <table className="w-full border-collapse border m-4">
                 <thead>
                     <tr className="bg-gray-100">
                         <th className="border p-2">ID</th>
