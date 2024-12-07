@@ -4,17 +4,7 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { loadBooks } from "../utils/storage";
 import BookList from "../components/book_list";
-
-interface Book {
-    id: number;
-    title: string;
-    author: string;
-    price: number;
-    description: string;
-    rating: number;
-    total: number;
-    stock: number;
-}
+import { Book } from "../utils/book";
 
 export default function ListPage() {
     const router = useRouter();
