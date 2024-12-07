@@ -1,7 +1,9 @@
+import { Book } from "./book";
+
 const BASE_URL = "/api/books"; 
 
 // 책 목록 조회
-export const fetchBooks = async (): Promise<any[]> => {
+export const fetchBooks = async (): Promise<Book[]> => {
     try {
         const response = await fetch(`${BASE_URL}`);
         if (!response.ok) {

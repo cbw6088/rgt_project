@@ -2,15 +2,7 @@
 
 import React from "react";
 import { useRouter } from "next/navigation";
-
-interface Book {
-    id: number;
-    title: string;
-    author: string;
-    price: number;
-    description: string;
-    rating: number;
-}
+import { Book } from "../utils/book";
 
 const BookItem: React.FC<{ book: Book }> = ({ book }) => {
     const router = useRouter();

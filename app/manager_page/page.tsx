@@ -2,19 +2,8 @@
 
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import { books as initialBooks } from "@/app/mock_data/books";
 import { loadBooks, saveBooks, initializeBooks } from "../utils/storage";
-
-interface Book {
-    id: number;
-    title: string;
-    author: string;
-    price: number;
-    description: string;
-    rating: number;
-    total: number;
-    stock: number;
-}
+import { Book } from "../utils/book";
 
 const ManageBooks: React.FC = () => {
     const router = useRouter();

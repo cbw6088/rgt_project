@@ -5,4 +5,6 @@ export interface Book {
     price: number;
     description: string;
     rating: number;
+    total: number;
+    stock: number;
 }
